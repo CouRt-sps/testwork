@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <title>Список постов</title>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="container mx-auto">
+        <!-- Список постов -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 bg-white shadow">
+                <img src="post.jpeg" alt="Пост 1">
+                <h2 class="text-lg font-bold">Заголовок поста 1</h2>
+                <p>Мини описание поста 1</p>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded details-button" data-post-id="1">Подробнее</button>
+            </div>
+            <div class="p-4 bg-white shadow">
+                <img src="post.jpeg" alt="Пост 2">
+                <h2 class="text-lg font-bold">Заголовок поста 2</h2>
+                <p>Мини описание поста 2</p>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded details-button" data-post-id="2">Подробнее</button>
+            </div>
+            <div class="p-4 bg-white shadow">
+                <img src="post.jpeg" alt="Пост 1">
+                <h2 class="text-lg font-bold">Заголовок поста 3</h2>
+                <p>Мини описание поста 3</p>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded details-button" data-post-id="1">Подробнее</button>
+            </div>
+            <div class="p-4 bg-white shadow">
+                <img src="post.jpeg" alt="Пост 4">
+                <h2 class="text-lg font-bold">Заголовок поста 4</h2>
+                <p>Мини описание поста 4</p>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded details-button" data-post-id="1">Подробнее</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const detailsButtons = document.querySelectorAll(".details-button");
+
+        detailsButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const postId = button.getAttribute("data-post-id");
+                window.location.href = "cardPost.html";
+            });
+        });
+    });
+</script>
+</body>
+</html>

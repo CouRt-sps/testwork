@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <title>Карточка поста</title>
+    <style>
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        .post-image {
+            width: 500px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-semibold mb-4">Подробная карточка поста</h1>
+        <div class="p-4 bg-white shadow mb-4 flex-container">
+            <img id="post-image" src="post.jpeg" alt="Пост" class="post-image">
+            <div>
+                <h2 class="text-lg font-bold">Заголовок поста</h2>
+                <p>Дата публикации: 01.01.2023</p>
+                <p>Полное описание поста</p>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded" id="close-details">Назад</button>
+            </div>
+        </div>
+        <div class="mt-4 bg-white p-4 shadow">
+            <h3 class="text-lg font-bold">Оставить отзыв</h3>
+            <form>
+                <textarea class="w-full h-20 p-2 mt-2 rounded" placeholder="Ваш отзыв"></textarea>
+                <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">Отправить отзыв</button>
+            </form>
+        </div>
+        <div class="mt-4 bg-white p-4 shadow">
+            <h3 class="text-lg font-bold">Отзывы</h3>
+            <div class="mt-4 bg-white p-4 shadow">
+                <p><strong>Пользователь 1:</strong> Отзыв к посту </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button class="mt-1 bg-blue-500 text-white py-2 px-4 rounded reply-button">Ответить</button>
+                </div>
+                <!-- Вложенный отзыв -->              
+                <div class="ml-4 mt-2">
+                    <p><strong>Пользователь 2:</strong> Ответ на отзыв 1</p>
+                </div>
+            </div>
+            <div class="mt-4 bg-white p-4 shadow">
+                <div class="mt-2">
+                    <p><strong>Пользователь 2:</strong> Отзыв к посту </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button class="mt-1 bg-blue-500 text-white py-2 px-4 rounded reply-button">Ответить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden mt-4 bg-white p-4 shadow" id="form-details">
+                <form>
+                    <textarea class="w-full h-20 p-2 mt-2 rounded" placeholder="Ваш отзыв"></textarea>
+                    <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">Отправить отзыв</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+     document.querySelector('.reply-button').addEventListener('click', function () {
+            document.querySelector('#post-details').classList.add('hidden');
+        });
+
+        const postButtons = document.querySelectorAll('.grid button');
+        postButtons.forEach(function (button, index) {
+            button.addEventListener('click', function () {
+                const postDetails = document.querySelector('#form-details');
+
+                if (postDetails.classList.contains('hidden')) {
+                    postDetails.classList.remove('hidden');
+                } else {
+                    postDetails.classList.add('hidden');
+                }
+            });
+        });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const backButton = document.getElementById("close-details");
+
+        backButton.addEventListener("click", function () {
+            window.location.href = "list.html";
+        });
+    });
+</script>
+</body>
+</html>
